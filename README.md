@@ -84,7 +84,7 @@ aws ec2 import-key-pair \
 aws ec2 describe-key-pairs --key-names apatel638-key
 ```
 
-![Key pair generated and imported](screenshots/task1-key-import.png)
+![Key pair generated and imported](screenshots/assignment2-1.jpg)
 
 ---
 
@@ -108,8 +108,6 @@ aws ec2 describe-instances \
   --output table
 ```
 
-![EC2 instance deployed and running](screenshots/task2-ec2-deployed.png)
-
 ---
 
 ## Task 3 — SSH Access Configuration
@@ -125,7 +123,7 @@ aws ec2 authorize-security-group-ingress \
   --cidr $(curl -s ifconfig.me)/32
 ```
 
-![SSH rule configured for specific IP](screenshots/task3-ssh-access.png)
+![SSH rule configured for specific IP](screenshots/assignment2-4.jpg)
 
 ---
 
@@ -142,9 +140,7 @@ aws ec2 authorize-security-group-ingress \
   --cidr 0.0.0.0/0
 ```
 
-Both SSH (port 22) and HTTP (port 80) rules confirmed active in the AWS Management Console.
-
-![SSH and HTTP rules configured](screenshots/task4-http-access.png)
+![SSH and HTTP rules both configured](screenshots/assignment2-5.jpg)
 
 ---
 
@@ -160,7 +156,7 @@ chmod 400 ~/.ssh/apatel638-key
 ssh -i ~/.ssh/apatel638-key ec2-user@<public-ip>
 ```
 
-![SSH connection established as ec2-user](screenshots/task5-ssh-connection.png)
+![SSH connection established as ec2-user](screenshots/assignment2-6.jpg)
 
 ---
 
@@ -187,8 +183,6 @@ id acs730
 sudo -l -U acs730
 ```
 
-![User acs730 created with sudo access](screenshots/task6-user-creation.png)
-
 ---
 
 ## Task 7 — Login as acs730
@@ -204,7 +198,7 @@ sudo whoami
 # Expected output: root
 ```
 
-![Logged in as acs730 with confirmed sudo](screenshots/task7-login-acs730.png)
+![Logged in as acs730 with confirmed sudo](screenshots/assignment2-8.jpg)
 
 ---
 
@@ -223,10 +217,10 @@ sudo yum install -y httpd
 # Create custom HTML page
 sudo bash -c 'cat > /var/www/html/index.html << HTML
 <html>
-<head><title>ACS730 Assignment 3</title></head>
+<head><title>ACS730 Assignment 2</title></head>
 <body>
   <h1>Hello from apatel638!</h1>
-  <p>ACS730 Assignment 3 - Web Server on Amazon EC2</p>
+  <p>ACS730 Assignment 2 - Web Server on Amazon EC2</p>
 </body>
 </html>
 HTML'
@@ -254,16 +248,16 @@ chmod +x install_httpd.sh
 # Test locally
 curl http://localhost
 
-# Test externally (from Cloud9)
+# Test externally
 curl http://<public-ip>
 
 # Check service status
 sudo systemctl status httpd
 ```
 
-![Apache installed and serving custom HTML](screenshots/task8-apache-running.png)
-![Web server verified via public IP](screenshots/task8-external-access.png)
-![Apache service status active and running](screenshots/task8-service-status.png)
+![Web server verified via public IP](screenshots/assignment2-12.jpg)
+
+![Apache service status active and running](screenshots/assignment2-13.jpg)
 
 ---
 
@@ -290,7 +284,7 @@ aws ec2 describe-instances \
 
 > **Always terminate instances after testing.** EC2 instances accrue charges by the hour — even when idle.
 
-![EC2 instance terminated](screenshots/task9-cleanup.png)
+![EC2 instance terminated](screenshots/assignment2-15.jpg)
 
 ---
 
